@@ -9,23 +9,11 @@ const supabase = createClient(
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    
-    const { data, error } = await supabase
-      .from('news')
-      .insert([{
-        title: body.title,
-        summary: body.summary,
-        content: body.content,
-        category: body.category || 'AI',
-        source_url: body.source_url || '',
-        created_at: new Date().toISOString()
-      }])
-
+    const { error } = await supabase.from('news').insert([body])
     if (error) throw error
-
-    return NextResponse.json({ success: true, message: '新闻已保存' })
+    return NextResponse.json({ success: true })
   } catch (error) {
-    return NextResponse.json({ success: false, error: String(error) }, { status: 500 })
+    return NextResponse.json({ success: false }, { status: 500 })
   }
 }
 
