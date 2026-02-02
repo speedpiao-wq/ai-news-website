@@ -20,3 +20,4 @@ export async function POST(request: Request) {
 export async function GET() {
   return NextResponse.json({ status: 'Webhook is ready' })
 }
+// Deployed on Mon Feb  2 18:08:13 UTC 2026
