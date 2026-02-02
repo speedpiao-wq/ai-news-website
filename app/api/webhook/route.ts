@@ -1,4 +1,3 @@
-cat > app/api/webhook/route.ts << 'EOF'
 import { createClient } from '@supabase/supabase-js'
 import { NextResponse } from 'next/server'
 
@@ -33,4 +32,3 @@ export async function POST(request: Request) {
 export async function GET() {
   return NextResponse.json({ status: 'Webhook is ready' })
 }
-EOF
